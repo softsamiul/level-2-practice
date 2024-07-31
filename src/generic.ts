@@ -71,4 +71,28 @@
       // display: 'Oled'
     },
   };
+
+  // functions with generic
+  const createArray = (param: string): string[] => {
+    return [param];
+  };
+  const creategenericArray = <T>(param: T): T[] => {
+    return [param];
+  };
+  interface User {
+    name: string;
+    age: number;
+  }
+  let res1 = createArray("Bangladesh");
+  let resgeneric = creategenericArray<string>("Bd");
+  let resGenericObj = creategenericArray<User>({ name: "X", age: 3 });
+
+  const createTupleArray = <T, Q>(p1: T, p2: Q): [T, Q] => {
+    return [p1, p2];
+  };
+
+  const addCourse = <T>(student: T) => {
+    const course = "Next Level";
+    return { ...student, course };
+  };
 }
