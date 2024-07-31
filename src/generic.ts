@@ -34,8 +34,41 @@
 
   const tupleArr: GenericTuple<string, string> = ["Mr X", "Mrs Y"];
 
-  const dummyTuple: GenericTuple<
-    number,
-    { name: string; gender: "male" | "female" }
-  > = [1234, { name: "Mr X", gender: "male" }];
+  interface Dummy {
+    name: string;
+    gender: "male" | "female";
+  }
+  const dummyTuple: GenericTuple<number, Dummy> = [
+    1234,
+    { name: "Mr X", gender: "male" },
+  ];
+
+  // generic with interface
+  interface Developer<T> {
+    name: string;
+    computer: {
+      brand: string;
+      model: string;
+      releaseYear: number;
+    };
+    smartWatch: T;
+  }
+  interface Watch {
+    brand: string;
+    model: string;
+    display?: string;
+  }
+  const richDev: Developer<Watch> = {
+    name: "Mr Dev",
+    computer: {
+      brand: "Acer",
+      model: "Aspire 3",
+      releaseYear: 2021,
+    },
+    smartWatch: {
+      brand: "AApple",
+      model: "x",
+      // display: 'Oled'
+    },
+  };
 }
